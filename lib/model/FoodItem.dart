@@ -42,11 +42,11 @@ class FoodItem {
   int quantity;
 
   FoodItem({
-    @required this.id,
-    @required this.title,
-    @required this.hotel,
-    @required this.price,
-    @required this.imgUrl,
+    this.id,
+    this.title,
+    this.hotel,
+    this.price,
+    this.imgUrl,
     this.quantity = 1,
   });
 

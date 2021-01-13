@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:food_del/model/FoodItem.dart';
 import 'package:food_del/model/FoodOrder.dart';
 
 class FoodOrderService {

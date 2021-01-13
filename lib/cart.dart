@@ -9,7 +9,7 @@ import 'bloc/cartlistBloc.dart';
 import 'bloc/listTileColorBloc.dart';
 import 'const/themeColor.dart';
 import 'model/FoodItem.dart';
-import 'dart:developer';
+
 
 class Cart extends StatelessWidget {
   @override
@@ -148,6 +148,7 @@ class BottomBar extends StatelessWidget {
     );
   }
 }
+
 
 void createFoodOrder(){
 

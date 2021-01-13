@@ -3,14 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_del/bloc/listTileColorBloc.dart';
+import 'package:food_del/main_drawer.dart';
 import 'package:food_del/services/authentication_service.dart';
 import 'package:food_del/sign_in_page.dart';
+import 'package:food_del/get_menu.dart';
 import 'package:provider/provider.dart';
 import 'bloc/cartlistBloc.dart';
 import 'cart.dart';
 import 'const/themeColor.dart';
 import 'model/FoodItem.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'main_drawer.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,6 +80,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Delivery App'),
+        backgroundColor: Colors.orange,
+      ),
+      drawer: MainDrawer(),
       body: SafeArea(
           child: Container(
             child: ListView(
@@ -434,7 +441,7 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           new IconButton(
-              icon: new Icon (Icons.menu),
+              icon: new Icon (Icons.arrow_back),
               onPressed: (){
                 context.read<AuthenticationService>().signOut();
               }
