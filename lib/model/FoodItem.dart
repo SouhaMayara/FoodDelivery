@@ -18,13 +18,6 @@ FooditemList fooditemList = FooditemList(foodItems: [
     price: 8.49,
     imgUrl: "https://www.tacos-avenue.com/wp-content/uploads/2016/11/cheese-burger.jpg",
   ),
-  FoodItem(
-    id: 3,
-    title: "Chili Cheeze Burger",
-    hotel: "Las Vegas Hotel",
-    price: 14.49,
-    imgUrl: "https://d2vfptrwx1cq2i.cloudfront.net/wp-content/uploads/2020/01/chili-cheese-burger-recipe.jpg",
-  ),
 ]);
 
 class FooditemList {

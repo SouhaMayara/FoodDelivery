@@ -1,9 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_del/cart.dart';
 import 'package:food_del/get_menu.dart';
+import 'package:food_del/maps.dart';
 import 'package:food_del/my_orders.dart';
+import 'package:food_del/orders.dart';
 import 'package:food_del/services/authentication_service.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -38,7 +42,7 @@ class MainDrawer extends StatelessWidget {
                     )
                   ),
                 ),
-                Text(user.email, style: TextStyle(fontSize: 18,color: Colors.white))
+                  Text(user.email, style: TextStyle(fontSize: 18,color: Colors.white))
               ],
             )
             ),
@@ -66,8 +70,8 @@ class MainDrawer extends StatelessWidget {
             ),
             onTap: () => {
               Navigator.push(context,
-              MaterialPageRoute(builder: (context) => GetMenuPage())
-            )
+                MaterialPageRoute(builder: (context) => GetMenuPage())
+              )
             },
           ),
           ListTile(
@@ -96,6 +100,20 @@ class MainDrawer extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MyOrdersPage())
               )
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.restaurant_menu),
+            title: Text(
+              'All Orders',
+              style: TextStyle(
+                  fontSize: 17
+              ),
+            ),
+            onTap: () async {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => OrdersPage())
+              );
             },
           ),
           ListTile(

@@ -9,12 +9,22 @@ class FoodOrder{
   String price;
   String owner;
   String address;
+  String date;
+  String time;
+  double latitude;
+  double longitude;
+  String delivered;
 
   FoodOrder({
     @required this.id,
     @required this.foodItems,
     @required this.price,
-    @required this.owner
+    @required this.owner,
+    @required this.date,
+    @required this.time,
+    @required this.latitude,
+    @required this.longitude,
+    @required this.delivered
   });
 
   Map<String,dynamic> toMap(){
@@ -27,7 +37,12 @@ class FoodOrder{
       'id': id,
       'foodItems': foodI,
       'price': price,
-      'owner' : owner
+      'owner' : owner,
+      'date' : date,
+      'time' : time,
+      'latitude': latitude,
+      'longitude': longitude,
+      'delivered': delivered,
     };
   }
 }

@@ -5,10 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_del/model/FoodOrder.dart';
 import 'package:food_del/services/foodOrder_service.dart';
+import 'package:geolocator/geolocator.dart';
 import 'bloc/cartlistBloc.dart';
 import 'bloc/listTileColorBloc.dart';
 import 'const/themeColor.dart';
 import 'model/FoodItem.dart';
+import 'package:intl/intl.dart';
 
 
 class Cart extends StatelessWidget {
@@ -126,13 +128,17 @@ class BottomBar extends StatelessWidget {
           Spacer(),
           new GestureDetector(
             onTap: () async{
+              DateTime now = DateTime.now();
+              String date = now.day.toString()+'/'+now.month.toString()+'/'+now.year.toString();
+              String time = now.hour.toString()+':'+now.minute.toString();
               final FirebaseAuth auth = FirebaseAuth.instance;
               final User user = auth.currentUser;
               int n;
               FoodOrderService foodOrderService = new FoodOrderService();
               final QuerySnapshot qSnap = await FirebaseFirestore.instance.collection('FoodOrders').get();
               n = qSnap.size;
-              FoodOrder foodOrder = new FoodOrder(id: n+1, foodItems: foodItems, price: returnTotalAmount(foodItems), owner: user.email);
+              final position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+              FoodOrder foodOrder = new FoodOrder(id: n+1, foodItems: foodItems, price: returnTotalAmount(foodItems), owner: user.email,date: date,time: time,latitude:position.latitude,longitude:position.longitude,delivered: 'false');
               foodOrderService.createFoodOrder((n+1).toString(),foodOrder);
             },
             child: Text(
@@ -147,11 +153,6 @@ class BottomBar extends StatelessWidget {
       ),
     );
   }
-}
-
-
-void createFoodOrder(){
-
 }
 
 class CustomPersonWidget extends StatefulWidget {

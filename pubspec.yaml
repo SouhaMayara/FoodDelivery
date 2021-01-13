@@ -42,7 +42,9 @@ dependencies:
   simple_animations:
   firebase_ml_vision:
   image_picker:
-
+  flutter_map:
+  geolocator:
+  lite_rolling_switch:
 
 dev_dependencies:
   flutter_test:
