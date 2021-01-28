@@ -45,6 +45,8 @@ dependencies:
   flutter_map:
   geolocator:
   lite_rolling_switch:
+  firebase_storage:
+  font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:

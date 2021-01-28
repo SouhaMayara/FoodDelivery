@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_del/cart.dart';
 import 'package:food_del/get_menu.dart';
 import 'package:food_del/maps.dart';
+import 'package:food_del/my_menu.dart';
 import 'package:food_del/my_orders.dart';
 import 'package:food_del/orders.dart';
 import 'package:food_del/services/authentication_service.dart';
@@ -83,9 +84,9 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () => {
-              /*Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => GetMenuPage())
-              )*/
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyMenuPage())
+              )
             },
           ),
           ListTile(
