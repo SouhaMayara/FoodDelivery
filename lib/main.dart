@@ -12,14 +12,13 @@ import 'cart.dart';
 import 'const/themeColor.dart';
 import 'model/FoodItem.dart';
 import 'main_drawer.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
-
-
 
 class MyApp extends StatelessWidget {
   @override
@@ -35,7 +34,11 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: "Food Delivery",
-        home: AuthenticationWrapper(),
+        home: AnimatedSplashScreen(
+          splash: Image.asset('assets/logo1.jpg'),
+          nextScreen: AuthenticationWrapper(),
+          backgroundColor: Colors.amber,
+        ),
       ),
     );
   }
