@@ -43,22 +43,13 @@ class _MyMenuPageState extends State<MyMenuPage> {
     ); /**/
   }
 }
-Future<String> getImageFromFireBase(item) async {
-  String url;
-  FirebaseStorage storage;
-  url = await storage.ref(item['imgUrl']).getDownloadURL();
-  return url;
-}
 
 String getImage(item){
   if(item['imgUrl'] == null){
     return 'https://cdn.iconscout.com/icon/premium/png-256-thumb/burger-1968268-1667350.png';
   }
-  if(item['imgUrl'].toString().contains("https")){
     return item['imgUrl'];
-  }
-  else
-    return "aaa";
+
 }
 Widget getCard(BuildContext context, item){
   return GestureDetector(

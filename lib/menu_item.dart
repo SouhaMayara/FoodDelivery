@@ -55,12 +55,13 @@ class _MenuItemPageState extends State<MenuItemPage> {
         String fileName = basename(_image.path);
         Reference firebaseStorageRef = FirebaseStorage.instance.ref().child(fileName);
         UploadTask uploadTask = firebaseStorageRef.putFile(_image);
-        TaskSnapshot taskSnapshot=await uploadTask;
+        var dowurl=await (await uploadTask).ref.getDownloadURL();
+
         setState(() {
           print("Picture uploaded");
           Scaffold.of(context).showSnackBar(SnackBar(content: Text('Picture Uploaded')));
         });
-        FirebaseFirestore.instance.collection("FoodItems").doc(foodItem['id'].toString()).update({"imgUrl" : _image.path});
+        FirebaseFirestore.instance.collection("FoodItems").doc(foodItem['id'].toString()).update({"imgUrl" : dowurl});
       }
       FirebaseFirestore.instance.collection("FoodItems").doc(foodItem['id'].toString()).update({"title" : burgerNameController.text});
       FirebaseFirestore.instance.collection("FoodItems").doc(foodItem['id'].toString()).update({"price" : int.parse(priceController.text)});
