@@ -165,7 +165,6 @@ class FirstHalf extends StatelessWidget {
           SizedBox(height: 30),
           title(),
           SizedBox(height: 30),
-          searchBar(),
           SizedBox(height: 45),
           categories(),
         ],
@@ -379,30 +378,6 @@ class CategoryListItem extends StatelessWidget {
   }
 }
 
-Widget searchBar() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      Icon(
-        Icons.search,
-        color: Colors.black45,
-      ),
-      SizedBox(width: 20),
-      Expanded(
-        child: TextField(
-          decoration: InputDecoration(
-              hintText: "Search....",
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
-              hintStyle: TextStyle(
-                color: Colors.black87,
-              ),
-              border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red))),
-        ),
-      ),
-    ],
-  );
-}
 
 Widget title() {
   return Row(
@@ -453,7 +428,6 @@ class CustomAppBar extends StatelessWidget {
             builder: (context, snapshot) {
               List<FoodItem> foodItems = snapshot.data;
               int length = foodItems != null ? foodItems.length : 0;
-
               return buildGestureDetector(length, context, foodItems);
             },
           )
@@ -473,12 +447,21 @@ class CustomAppBar extends StatelessWidget {
           return;
         }
       },
-      child: Container(
-        margin: EdgeInsets.only(right: 30),
-        child: Text(length.toString()),
-        padding: EdgeInsets.all(15),
-        decoration: BoxDecoration(
-            color: Colors.yellow[800], borderRadius: BorderRadius.circular(50)),
+      child:Row(
+        children: [
+          Icon(
+            Icons.add_shopping_cart_rounded,
+            color: Colors.orange
+          ),
+          Container(
+            margin: EdgeInsets.only(right: 30),
+            child:
+            Text(length.toString()),
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+                color: Colors.yellow[800], borderRadius: BorderRadius.circular(50)),
+          ),
+        ],
       ),
     );
   }
