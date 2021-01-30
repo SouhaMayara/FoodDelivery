@@ -80,7 +80,7 @@ class _GetMenuPageState extends State<GetMenuPage> {
     FoodItemService foodItemService = new FoodItemService();
     final QuerySnapshot qSnap = await FirebaseFirestore.instance.collection('FoodItems').get();
     int n = qSnap.size;
-    FoodItem foodItem = new FoodItem(id:n+1, title: f.title,hotel: user.email ,price: f.price);
+    FoodItem foodItem = new FoodItem(id:n+1, title: f.title,hotel: user.email ,price: f.price, imgUrl: 'https://cdn.iconscout.com/icon/premium/png-256-thumb/burger-1968268-1667350.png');
     foodItemService.createFoodItem((n+1).toString(), foodItem);
   }
 

@@ -30,7 +30,7 @@ class OrdersPage extends StatelessWidget {
           );
         },
       )
-    ); /**/
+    );
   }
 }
 

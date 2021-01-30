@@ -57,7 +57,7 @@ class BottomBar extends StatelessWidget {
             color: Colors.grey[700],
           ),
           persons(),
-          nextButtonBar(),
+          nextButtonBar(context),
         ],
       ),
     );
@@ -110,7 +110,7 @@ class BottomBar extends StatelessWidget {
     return totalAmount.toStringAsFixed(2);
   }
 
-  Container nextButtonBar() {
+  Container nextButtonBar(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 25),
       padding: EdgeInsets.all(25),
@@ -140,6 +140,7 @@ class BottomBar extends StatelessWidget {
               final position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
               FoodOrder foodOrder = new FoodOrder(id: n+1, foodItems: foodItems, price: returnTotalAmount(foodItems), owner: user.email,date: date,time: time,latitude:position.latitude,longitude:position.longitude,delivered: 'false');
               foodOrderService.createFoodOrder((n+1).toString(),foodOrder);
+              Navigator.pop(context);
             },
             child: Text(
               "Next",
